@@ -16,7 +16,7 @@ const { startTempCleaner } = require('./utils/tempCleaner');
 require('./utils/ffmpegQueue').installFluentFfmpegQueue();
 
 const commands = new Map();
-for (const name of ['stickers', 'toimg', 'tomp4', 'namesticker']) {
+for (const name of ['stickers', 'toimg', 'tomp4', 'namesticker', 'recortar']) {
   const plugin = require(`./plugins/${name}`);
   for (const c of [plugin.command, ...(plugin.aliases || [])]) commands.set(c, plugin.handler);
 }

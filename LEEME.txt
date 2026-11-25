@@ -7,6 +7,8 @@ Qué hace el bot:
   #s "hola"                  hace el sticker con el texto "hola" abajo
   #toimg                     convierte un sticker en imagen
   #tomp4                     convierte un sticker animado en video
+  #recortar [barras|blur]    deja un video en 1:1 (recorta los lados,
+                             barras negras o fondo difuminado)
   #s-name "paquete" "autor"  le cambia el nombre y el autor a un sticker
 
 Envía la foto o el video con el comando escrito, o responde a un mensaje

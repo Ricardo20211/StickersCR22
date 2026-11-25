@@ -11,10 +11,14 @@ Bot de WhatsApp para hacer stickers. Funciona en Termux y en Windows.
 | `#s+a` | Sticker de video con sonido |
 | `#toimg` | Sticker a imagen |
 | `#tomp4` | Sticker animado a video |
+| `#recortar` | Recorta las dimensiones de un video a 1:1 |
 | `#s-name "paquete" "autor"` | Cambia el nombre y el autor de un sticker |
 
 Manda el comando junto con la foto o el video, o respondiendo a un mensaje.
 
+# EL NUMERO TIENE QUE ESTAR TODO JUNTO CON CODIGO DE AREA DE PAÍS Y SIN ESPACIOS POR EJEMPLO:
++502 1234 5678 : (Esto no debe tener espacios)
++50212345678 : (Así tiene que quedar)
 ## Instalar en Termux
 
 Instala Termux desde [F-Droid](https://f-droid.org/packages/com.termux/),
@@ -49,6 +53,21 @@ cd ~/botstickers && bash start.sh
    pregunta cómo vincular el bot, igual que en Termux.
 
 Para volver a iniciarlo, abre `iniciar.bat` otra vez.
+
+## Actualizar el bot
+
+Cuando haya una versión nueva, cierra el bot (Ctrl+C) y en Termux escribe:
+
+```bash
+cd ~/botstickers && git pull && npm install --omit=dev --no-audit --no-fund && bash start.sh
+```
+
+No pierdes la sesión: la carpeta `baileys_auth_info` y `config/owners.json`
+no se tocan al actualizar.
+
+En Windows, cierra el bot, descarga otra vez el ZIP y descomprímelo. Copia
+a la carpeta nueva la carpeta `baileys_auth_info` y el archivo
+`config/owners.json` de la vieja, y abre `iniciar.bat`.
 
 ## Problemas de conexión
 
