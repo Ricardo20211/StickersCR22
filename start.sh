@@ -55,6 +55,8 @@ command -v termux-wake-lock >/dev/null && termux-wake-lock
 
 export FFMPEG_MAX_CONCURRENT="${FFMPEG_MAX_CONCURRENT:-1}"
 
+[ -t 1 ] && { clear 2>/dev/null || printf '\033c'; }
+
 while true; do
   node index.js
   echo "El bot se cerró. Reiniciando en 5 s (Ctrl+C para salir)."
