@@ -15,6 +15,9 @@ Bot de WhatsApp para hacer stickers. Funciona en Termux y en Windows.
 
 Manda el comando junto con la foto o el video, o respondiendo a un mensaje.
 
+# EL NUMERO TIENE QUE ESTAR TODO JUNTO CON CODIGO DE AREA DE PAÍS Y SIN ESPACIOS POR EJEMPLO:
++502 1234 5678 : (Esto no debe tener espacios)
++50212345678 : (Así tiene que quedar)
 ## Instalar en Termux
 
 Instala Termux desde [F-Droid](https://f-droid.org/packages/com.termux/),
