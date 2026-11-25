@@ -266,7 +266,7 @@ async function connectToWhatsApp() {
         reconnectAttempts = 0;
         if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
         try { fs.unlinkSync(QR_FILE); } catch {}
-        logger.info(`Bot de stickers conectado como ${currentSock.user?.id}.`);
+        logger.info('Bot Conectado');
         startTempCleaner();
       }
     });
