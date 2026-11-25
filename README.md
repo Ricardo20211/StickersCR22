@@ -1,4 +1,4 @@
-# botstickers
+# botstickers con sonido
 
 Bot de WhatsApp para hacer stickers. Funciona en Termux y en Windows.
 
