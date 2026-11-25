@@ -1,0 +1,87 @@
+BOT DE STICKERS PARA TERMUX
+
+Qué hace el bot:
+  #s+a                       convierte un video en sticker con sonido
+  #s                         convierte una foto o video en sticker
+                             (también sirve #sticker o #stiker)
+  #s "hola"                  hace el sticker con el texto "hola" abajo
+  #toimg                     convierte un sticker en imagen
+  #tomp4                     convierte un sticker animado en video
+  #s-name "paquete" "autor"  le cambia el nombre y el autor a un sticker
+
+Envía la foto o el video con el comando escrito, o responde a un mensaje
+con el comando.
+
+
+CÓMO INSTALARLO
+
+1. Instala Termux desde F-Droid o GitHub:
+     https://f-droid.org/packages/com.termux/
+     https://github.com/termux/termux-app/releases
+   En GitHub, descarga el archivo que termina en "universal.apk".
+   Si no puedes, usa la Play Store como última opción, aunque a veces
+   da errores al instalar paquetes:
+     https://play.google.com/store/apps/details?id=com.termux
+
+2. Copia el archivo botstickers.zip a la carpeta Descargas
+   del teléfono.
+
+3. Abre Termux y escribe estos comandos, uno por uno:
+
+     pkg update -y && pkg install -y unzip
+     termux-setup-storage
+     cd ~
+     unzip /sdcard/Download/botstickers.zip -d botstickers
+     cd botstickers
+     bash start.sh
+
+   termux-setup-storage pide permiso para ver tus archivos: acepta.
+   La primera vez, start.sh descarga todo lo que el bot necesita.
+   Tarda unos minutos.
+
+4. Te pregunta cómo vincular el bot. Escribe 1 o 2:
+
+   1 = Con código
+     Escribe el número de WhatsApp que va a ser el bot, con código de
+     país, por ejemplo: +502 1234 5678
+     Aparece un código de 8 caracteres.
+     En el teléfono que tiene ese WhatsApp, ve a:
+       Dispositivos vinculados > Vincular un dispositivo >
+       Vincular con el número de teléfono
+     y escribe el código.
+
+   2 = Con QR
+     Aparece un QR en Termux. Escanéalo desde otro teléfono que tenga
+     el WhatsApp del bot, en Dispositivos vinculados > Vincular un
+     dispositivo.
+
+5. Te pide tu número personal. Desde ese número puedes hacer stickers
+   sin límite. Si no quieres, déjalo vacío y presiona Enter.
+
+Listo. El bot ya responde los comandos.
+
+
+CÓMO VOLVER A INICIARLO
+
+Abre Termux y escribe:
+
+     cd ~/botstickers
+     bash start.sh
+
+No vuelve a descargar nada ni a pedir el código.
+
+
+COSAS QUE DEBES SABER
+
+- Para apagar el bot, presiona Ctrl+C en Termux.
+- Si cierras Termux desde las apps recientes, el bot se apaga.
+- Para que Android no lo apague solo, ve a Ajustes > Apps > Termux >
+  Batería y elige "Sin restricciones".
+- No uses el mismo número de bot en dos teléfonos o computadoras a la vez.
+- También puedes usar los comandos desde el mismo número del bot, por
+  ejemplo en el chat "Mensajes a mí mismo".
+- Para cambiar tu número personal, edita el archivo config/owners.json.
+- Si le pasas el bot a alguien, no le pases la carpeta baileys_auth_info
+  ni el archivo config/owners.json. Ahí está tu sesión de WhatsApp.
+- Antes de usarlo, lee SEGURIDAD.txt. Ahí explica qué hace el bot con
+  tus datos y qué riesgos hay, sobre todo si haces público el número.
