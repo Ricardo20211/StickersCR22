@@ -230,6 +230,9 @@ async function connectToWhatsApp() {
             const code = (await currentSock.requestPairingCode(pairingNumber)).match(/.{1,4}/g).join('-');
             console.log(`\nCódigo de vinculación: ${code}`);
             console.log('En WhatsApp: Dispositivos vinculados > Vincular un dispositivo > Vincular con el número de teléfono.');
+            console.log(`Si WhatsApp dice que el código no es válido, revisa que el número +${pairingNumber} esté bien escrito.`);
+            const startCmd = process.platform === 'win32' ? 'abre iniciar.bat' : 'escribe: bash start.sh';
+            console.log(`Si está mal, cierra el bot con Ctrl+C y vuelve a iniciarlo para escribirlo otra vez (${startCmd}).`);
             logger.info(`CÓDIGO DE VINCULACIÓN: ${code}`);
           } catch (e) {
             pairingRequested = false;
