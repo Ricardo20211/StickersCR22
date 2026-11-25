@@ -50,6 +50,22 @@ cd ~/botstickers && bash start.sh
 
 Para volver a iniciarlo, abre `iniciar.bat` otra vez.
 
+## Problemas de conexión
+
+Si el bot no conecta o se desconecta todo el tiempo, borra la sesión y
+vuelve a vincularlo.
+
+En Termux:
+
+```bash
+rm -rf ~/botstickers/baileys_auth_info && cd ~/botstickers && bash start.sh
+```
+
+En Windows, cierra el bot, borra la carpeta `baileys_auth_info` y abre
+`iniciar.bat` otra vez.
+
+También quita el dispositivo viejo en WhatsApp, en Dispositivos vinculados.
+
 ## Seguridad
 
 Lee [SEGURIDAD.txt](SEGURIDAD.txt). No compartas la carpeta
