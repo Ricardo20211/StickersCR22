@@ -26,14 +26,9 @@ CÓMO INSTALARLO
 2. Copia el archivo botstickers.zip a la carpeta Descargas
    del teléfono.
 
-3. Abre Termux y escribe estos comandos, uno por uno:
+3. Abre Termux, copia y pega esta línea:
 
-     pkg update -y && pkg install -y unzip
-     termux-setup-storage
-     cd ~
-     unzip /sdcard/Download/botstickers.zip -d botstickers
-     cd botstickers
-     bash start.sh
+     pkg update -y && pkg install -y unzip && termux-setup-storage && cd ~ && unzip /sdcard/Download/botstickers.zip -d botstickers && cd botstickers && bash start.sh
 
    termux-setup-storage pide permiso para ver tus archivos: acepta.
    La primera vez, start.sh descarga todo lo que el bot necesita.
@@ -65,8 +60,7 @@ CÓMO VOLVER A INICIARLO
 
 Abre Termux y escribe:
 
-     cd ~/botstickers
-     bash start.sh
+     cd ~/botstickers && bash start.sh
 
 No vuelve a descargar nada ni a pedir el código.
 
