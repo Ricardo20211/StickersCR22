@@ -25,6 +25,7 @@ const AUTH_DIR = path.join(__dirname, 'baileys_auth_info');
 const QR_FILE = path.join(__dirname, 'qr.txt');
 let pairingNumber = (process.env.PAIRING_NUMBER || '').replace(/\D/g, '');
 let pairingAsked = !!pairingNumber;
+let sessionReset = false;
 
 function askPairingNumber() {
   if (!process.stdin.isTTY) return Promise.resolve('');
@@ -190,7 +191,12 @@ async function connectToWhatsApp() {
     installSoundStickerSupport(proto, logger);
 
     const baileysLogger = pino({ level: 'silent' });
-    const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
+    let { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
+    if (!state.creds.registered && !sessionReset) {
+      sessionReset = true;
+      fs.rmSync(AUTH_DIR, { recursive: true, force: true });
+      ({ state, saveCreds } = await useMultiFileAuthState(AUTH_DIR));
+    }
     if (!state.creds.registered && !pairingAsked) {
       pairingAsked = true;
       pairingNumber = await askPairingNumber();
