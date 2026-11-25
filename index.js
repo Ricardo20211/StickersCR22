@@ -41,10 +41,11 @@ function askPairingNumber() {
     return askMode();
   };
   const askNumber = async () => {
-    console.log('\nNúmero de WhatsApp del bot, con código de país (ejemplo: +502 1234 5678).');
+    console.log('\nEscribe el número de WhatsApp del bot todo junto, sin espacios y con el código de país.');
+    console.log('Ejemplo: 50212345678 o +50212345678.');
     const num = (await question('Número: ')).replace(/\D/g, '');
     if (num.length >= 8 && num.length <= 15) return num;
-    console.log('Número no válido.');
+    console.log('Número no válido. Escríbelo todo junto con el código de país, por ejemplo 50212345678 o +50212345678.');
     return askNumber();
   };
   return askMode()
@@ -56,13 +57,14 @@ function askOwnerNumber() {
   if (!process.stdin.isTTY || OWNERS.length) return Promise.resolve();
   const readline = require('readline');
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  console.log('\nTu número personal, con código de país. Déjalo vacío para omitir.');
+  console.log('\nEscribe tu número personal todo junto, sin espacios y con el código de país.');
+  console.log('Ejemplo: 50212345678 o +50212345678. Déjalo vacío para omitir.');
   const ask = () => new Promise((resolve) => {
     rl.question('Número del dueño: ', (answer) => {
       const num = String(answer || '').replace(/\D/g, '');
       if (!num) return resolve();
       if (num.length < 8 || num.length > 15) {
-        console.log('Número no válido.');
+        console.log('Número no válido. Escríbelo todo junto con el código de país, por ejemplo 50212345678 o +50212345678.');
         return resolve(ask());
       }
       try {
