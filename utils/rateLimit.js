@@ -9,13 +9,6 @@ const GROUP_MAX       = 25;
 const STICKER_WINDOW_MS = 60 * 60 * 1000;
 const STICKER_MAX       = 10;
 
-const HEAVY_PLUGINS = new Set([
-  'dl-drive', 'dl-facebook', 'dl-facedoc', 'dl-insta', 'dl-mcpe', 'dl-mediafire',
-  'dl-mega', 'dl-spotify', 'dl-tiktok', 'dl-x', 'dl-ytmp3', 'dl-ytmp4',
-  'play', 'play-spotify', 'fx', 'video-speed', 'video-cuadrado', 'recortar', 'convertmp3', 'tomp4',
-  'upscale', 'pdfconvert', 'pdfconvert2', 'ssweb', 'shazam', 'ocr',
-]);
-
 const HEAVY_COMMANDS = new Set(['#s+a', '#tomp4', '#stickertovideo', '#s2mp4', '#recortar', '#1:1', '#1x1', '#square']);
 
 const STICKER_COMMANDS = new Set(['#s', '#sticker', '#stiker', '#s+a']);
@@ -93,10 +86,10 @@ function checkRateLimit(userId, { chatId, isGroup = false, heavy = false, sticke
 function rateLimitMessage({ reason, remaining }) {
   if (reason === 'sticker') return `Llegaste al límite de ${STICKER_MAX} stickers por hora. Podrás hacer más en ${Math.ceil(remaining / 60)} min.`;
   if (reason === 'group') return `El bot está recibiendo muchos comandos en este grupo. Esperen ${remaining}s.`;
-  if (reason === 'heavy') return `Solo puedes usar ${HEAVY_MAX} descargas o conversiones por minuto. Espera ${remaining}s.`;
-  if (reason === 'heavyCooldown') return `Espera ${remaining}s antes de otra descarga o conversión.`;
+  if (reason === 'heavy') return `Solo puedes usar ${HEAVY_MAX} conversiones por minuto. Espera ${remaining}s.`;
+  if (reason === 'heavyCooldown') return `Espera ${remaining}s antes de otra conversión.`;
   if (reason === 'cooldown') return `Espera ${remaining}s entre comandos.`;
-  return `Vas rápido w. Espera ${remaining}s Y funen a Manubs`;
+  return `Vas muy rápido. Espera ${remaining}s.`;
 }
 
-module.exports = { checkRateLimit, rateLimitMessage, HEAVY_PLUGINS, HEAVY_COMMANDS, STICKER_COMMANDS };
+module.exports = { checkRateLimit, rateLimitMessage, HEAVY_COMMANDS, STICKER_COMMANDS };

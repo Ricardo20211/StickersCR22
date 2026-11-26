@@ -53,4 +53,4 @@ function installGroupCache(sock) {
   return sock;
 }
 
-module.exports = { installGroupCache, cachedGroupMetadata, invalidate };
+module.exports = { installGroupCache, cachedGroupMetadata };

@@ -80,8 +80,4 @@ function installSendLimiter(sock) {
   return sock;
 }
 
-function sendStats() {
-  return { stickersWaiting: lanes.sticker.queue.length, messagesWaiting: lanes.general.queue.length };
-}
-
-module.exports = { installSendLimiter, sendStats };
+module.exports = { installSendLimiter };

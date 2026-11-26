@@ -8,7 +8,6 @@ const logger = require('./utils/logger');
 const { getMessageContent } = require('./utils/common');
 const { checkRateLimit, rateLimitMessage, HEAVY_COMMANDS, STICKER_COMMANDS } = require('./utils/rateLimit');
 const { isOwner, addOwner, OWNERS } = require('./config/owner');
-const { installCompat } = require('./utils/baileys');
 const { installSoundStickerSupport } = require('./utils/soundSticker');
 const { installSendLimiter } = require('./utils/sendLimiter');
 const { installGroupCache, cachedGroupMetadata } = require('./utils/groupCache');
@@ -222,7 +221,6 @@ async function connectToWhatsApp() {
     });
     installSendLimiter(currentSock);
     trackSentMessages(currentSock);
-    installCompat(currentSock);
     installGroupCache(currentSock);
     sock = currentSock;
 

@@ -37,15 +37,6 @@ function acquire() {
   });
 }
 
-async function withFfmpegSlot(fn) {
-  const release = await acquire();
-  try {
-    return await fn();
-  } finally {
-    release();
-  }
-}
-
 function execFfmpeg(file, args, options, callback) {
   if (typeof options === 'function') { callback = options; options = {}; }
   acquire().then((release) => {
@@ -92,8 +83,4 @@ function installFluentFfmpegQueue() {
   proto._spawnFfmpeg = queued;
 }
 
-function queueStats() {
-  return { active: state.active, waiting: state.waiting.length, max: MAX_CONCURRENT };
-}
-
-module.exports = { execFfmpeg, withFfmpegSlot, installFluentFfmpegQueue, queueStats, FfmpegBusyError };
+module.exports = { execFfmpeg, installFluentFfmpegQueue, FfmpegBusyError };

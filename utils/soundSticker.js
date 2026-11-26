@@ -191,8 +191,4 @@ async function sendSoundSticker(sock, jid, { sticker, audio, seconds, waveform }
   return built;
 }
 
-function getStickerAudio(stickerMessage) {
-  return stickerMessage?.audioMessage || null;
-}
-
-module.exports = { installSoundStickerSupport, getStickerAudio, sendSoundSticker, _findField: findField };
+module.exports = { installSoundStickerSupport, sendSoundSticker };

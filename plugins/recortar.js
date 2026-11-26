@@ -14,7 +14,7 @@ const MAX_QUEUE = 3;
 const SIDE_NORMAL = 720;
 const SIDE_HQ = 1920;
 
-const queue = global.__cuadradoQueue || (global.__cuadradoQueue = { tail: Promise.resolve(), pending: 0 });
+const queue = global.__recortarQueue || (global.__recortarQueue = { tail: Promise.resolve(), pending: 0 });
 
 function enqueue(task) {
   queue.pending++;
@@ -150,7 +150,6 @@ async function downloadToFile(media, type, filePath, maxBytes) {
 module.exports = {
   command: '#recortar',
   aliases: ['#1:1', '#1x1', '#square'],
-  _internals: { parseMode, squareSide, buildFilter, buildArgs, toSquare },
   handler: async (message, sock, reply) => {
     const body   = getMessageContent(message);
     const chat   = message.key.remoteJid;
