@@ -33,10 +33,24 @@ así que puedes abrirlos y leer lo que hacen.
 
 #### Dónde quedan tus datos
 
-Tu sesión de WhatsApp se guarda en la carpeta `baileys_auth_info` de tu
-teléfono y no se sube a ningún lado. Para borrarla, cierra el bot y
-borra esa carpeta. También puedes cerrar la sesión desde WhatsApp, en
-Dispositivos vinculados.
+Tu sesión de WhatsApp se guarda en la carpeta `baileys_auth_info`, dentro
+de la carpeta del bot, y no se sube a ningún lado.
+
+Para borrarla en Android, detén el bot y escribe esto en Termux:
+
+```bash
+rm -rf ~/botstickers/baileys_auth_info
+```
+
+La carpeta está dentro del almacenamiento privado de Termux, así que no
+aparece en el administrador de archivos y no se puede borrar desde ahí.
+Si desinstalas Termux, también se borra.
+
+En Windows, cierra el bot y borra la carpeta `baileys_auth_info` que está
+dentro de la carpeta del bot.
+
+También puedes cerrar la sesión desde WhatsApp, en Dispositivos
+vinculados.
 
 #### Cosas a tener en cuenta
 
@@ -78,7 +92,9 @@ Manda el comando junto con la foto o el video, o respondiendo a un mensaje.
 # EL NUMERO TIENE QUE ESTAR TODO JUNTO CON CODIGO DE AREA DE PAÍS Y SIN ESPACIOS POR EJEMPLO:
 +502 1234 5678 : (Esto no debe tener espacios)
 +50212345678 : (Así tiene que quedar)
-## Instalar en Termux
+## Termux
+
+### Instalar
 
 Instala Termux desde [F-Droid](https://f-droid.org/packages/com.termux/),
 [GitHub](https://github.com/termux/termux-app/releases) o la
@@ -92,13 +108,66 @@ pkg update -y && pkg install -y git && git clone https://github.com/opgbl/botsti
 La primera vez instala todo lo necesario y te pregunta cómo vincular el
 bot: `1` con código o `2` con QR.
 
-Para volver a iniciarlo:
+### Detener el bot
+
+Presiona `CTRL` + `C` (la tecla `CTRL` está en la fila de teclas de
+arriba del teclado). Si sale "Reiniciando en 5 s", presiona `CTRL` + `C`
+otra vez antes de que vuelva a arrancar.
+
+Para cerrar Termux por completo, escribe `exit` o toca "Exit" en la
+notificación de Termux.
+
+### Volver a iniciar el bot
 
 ```bash
 cd ~/botstickers && bash start.sh
 ```
 
-## Instalar en Windows
+No hace falta vincularlo de nuevo: la sesión queda guardada en la carpeta
+`baileys_auth_info`.
+
+### Actualizar el bot
+
+Cuando haya una versión nueva, detén el bot y escribe:
+
+```bash
+cd ~/botstickers && git pull && npm install --omit=dev --no-audit --no-fund && bash start.sh
+```
+
+No pierdes la sesión: la carpeta `baileys_auth_info` y `config/owners.json`
+no se tocan al actualizar.
+
+### Problemas de conexión o volver a vincular
+
+Si el bot no conecta, se desconecta todo el tiempo o cerraste la sesión
+en WhatsApp, borra la sesión y vuelve a vincularlo:
+
+```bash
+rm -rf ~/botstickers/baileys_auth_info && cd ~/botstickers && bash start.sh
+```
+
+### Eliminar el bot por completo
+
+1. Detén el bot.
+2. Cierra la sesión en WhatsApp (los pasos están más abajo, en
+   "Cerrar la sesión del dispositivo vinculado").
+3. Borra la carpeta del bot:
+
+   ```bash
+   rm -rf ~/botstickers
+   ```
+
+4. Opcional: si no usas Node.js ni ffmpeg para otra cosa, también puedes
+   quitarlos:
+
+   ```bash
+   pkg uninstall -y nodejs-lts ffmpeg
+   ```
+
+
+## Windows
+
+### Instalar
 
 1. Instala [Node.js](https://nodejs.org) (versión 20 o más nueva).
 2. Instala ffmpeg. En PowerShell o CMD:
@@ -111,35 +180,54 @@ cd ~/botstickers && bash start.sh
 4. Abre `iniciar.bat`. La primera vez instala las dependencias y te
    pregunta cómo vincular el bot, igual que en Termux.
 
-Para volver a iniciarlo, abre `iniciar.bat` otra vez.
+### Detener el bot
 
-## Actualizar el bot
+Cierra la ventana de `iniciar.bat`. También puedes presionar `Ctrl` + `C`
+y, cuando pregunte "¿Desea terminar el trabajo por lotes?", escribir `S`
+y Enter.
 
-Cuando haya una versión nueva, cierra el bot (Ctrl+C) y en Termux escribe:
+### Volver a iniciar el bot
 
-```bash
-cd ~/botstickers && git pull && npm install --omit=dev --no-audit --no-fund && bash start.sh
-```
+Abre `iniciar.bat` otra vez. No hace falta vincularlo de nuevo.
 
-No pierdes la sesión: la carpeta `baileys_auth_info` y `config/owners.json`
-no se tocan al actualizar.
+### Actualizar el bot
 
-En Windows, cierra el bot, descarga otra vez el ZIP y descomprímelo. Copia
-a la carpeta nueva la carpeta `baileys_auth_info` y el archivo
+Detén el bot, descarga otra vez el ZIP y descomprímelo. Copia a la
+carpeta nueva la carpeta `baileys_auth_info` y el archivo
 `config/owners.json` de la vieja, y abre `iniciar.bat`.
 
-## Problemas de conexión
+### Problemas de conexión o volver a vincular
 
-Si el bot no conecta o se desconecta todo el tiempo, borra la sesión y
-vuelve a vincularlo.
-
-En Termux:
-
-```bash
-rm -rf ~/botstickers/baileys_auth_info && cd ~/botstickers && bash start.sh
-```
-
-En Windows, cierra el bot, borra la carpeta `baileys_auth_info` y abre
+Si el bot no conecta, se desconecta todo el tiempo o cerraste la sesión
+en WhatsApp, detén el bot, borra la carpeta `baileys_auth_info` y abre
 `iniciar.bat` otra vez.
 
-También quita el dispositivo viejo en WhatsApp, en Dispositivos vinculados.
+### Eliminar el bot por completo
+
+1. Detén el bot.
+2. Cierra la sesión en WhatsApp (los pasos están abajo).
+3. Borra la carpeta donde descomprimiste el bot.
+4. Opcional: si no usas Node.js ni ffmpeg para otra cosa, desinstala
+   Node.js desde Configuración > Aplicaciones, y ffmpeg con:
+
+   ```
+   winget uninstall Gyan.FFmpeg
+   ```
+
+## Cerrar la sesión del dispositivo vinculado
+
+Esto desconecta el bot de tu WhatsApp. Sirve si ya no lo vas a usar, si
+crees que alguien más tiene tu sesión o si quieres vincular otro número.
+
+1. Abre WhatsApp en tu teléfono.
+2. En Android toca los tres puntos (⋮) arriba a la derecha. En iPhone
+   ve a Configuración.
+3. Entra en Dispositivos vinculados.
+4. Toca el dispositivo del bot y luego Cerrar sesión.
+
+Después de esto el bot ya no puede entrar. Si lo inicias, mostrará
+"Sesión cerrada por WhatsApp". Para volver a usarlo, sigue los pasos de
+"Problemas de conexión o volver a vincular" de Termux o de Windows.
+
+Si cambias de teléfono o vuelves a vincular el bot, quita también el
+dispositivo viejo desde Dispositivos vinculados.
