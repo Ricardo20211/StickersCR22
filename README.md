@@ -2,6 +2,9 @@
 
 Bot de WhatsApp para hacer stickers. Funciona en Termux y en Windows.
 
+#VIDEO TUTORIAL QUE TIKTOK ELIMINÓ
+https://github.com/user-attachments/assets/dbd03b35-76f3-4806-a1fa-f1958b2dbc60
+
 ## Comandos
 
 | Comando | Qué hace |
