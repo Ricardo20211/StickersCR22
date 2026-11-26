@@ -2,6 +2,61 @@
 
 Bot de WhatsApp para hacer stickers. Funciona en Termux y en Windows.
 
+<details>
+<summary><b>¿Es seguro este bot? (toca para ver)</b></summary>
+
+Sí, no es un virus. Todo lo que trae son archivos de texto con código,
+así que puedes abrirlos y leer lo que hacen.
+
+#### Qué hace
+
+- Se conecta a tu WhatsApp como dispositivo vinculado, igual que
+  WhatsApp Web.
+- Responde solo cuando alguien manda un comando (#s, #s+a, #toimg,
+  #tomp4, #recortar, #s-name). Nunca manda mensajes por su cuenta ni
+  publica estados.
+- Convierte en stickers las fotos y videos que le mandan, y borra solo
+  los archivos temporales.
+
+#### Qué no hace
+
+- No manda tus datos, fotos ni mensajes a otros servidores.
+- No lee tus contactos ni los archivos del teléfono.
+- No pide contraseñas ni datos de pago.
+
+#### A qué se conecta
+
+- Al instalarse, descarga lo que necesita de Termux (pkg) y de npm, que
+  son los sitios oficiales.
+- Cuando arranca, consulta en GitHub cuál es la versión actual de
+  WhatsApp Web. Después solo habla con WhatsApp.
+
+#### Dónde quedan tus datos
+
+Tu sesión de WhatsApp se guarda en la carpeta `baileys_auth_info` de tu
+teléfono y no se sube a ningún lado. Para borrarla, cierra el bot y
+borra esa carpeta. También puedes cerrar la sesión desde WhatsApp, en
+Dispositivos vinculados.
+
+#### Cosas a tener en cuenta
+
+- WhatsApp no permite oficialmente bots en cuentas normales, así que
+  hay un riesgo pequeño de que bloqueen el número. Si te preocupa, usa
+  un número que no sea el principal.
+- Lo mejor es que el bot lo uses solo tú o un grupo pequeño. Mientras
+  menos gente mande comandos, menos riesgo hay.
+- Publicar el número del bot es un riesgo. Si mucha gente le escribe,
+  el bot manda muchos mensajes seguidos, y WhatsApp puede tomarlo como
+  spam y bloquear el número. Si además algunas personas lo reportan,
+  el bloqueo es más probable. Por eso, si lo vas a publicar, usa un
+  número aparte que no te importe perder.
+- Descarga el bot solo de quien lo creó. Si alguien te pasa una copia
+  modificada, ya no se puede asegurar que sea igual.
+- Nunca compartas la carpeta `baileys_auth_info`: con ella alguien podría
+  entrar a tu WhatsApp.
+
+</details>
+
 ## Video tutorial que TikTok eliminó
 
 https://github.com/user-attachments/assets/dbd03b35-76f3-4806-a1fa-f1958b2dbc60
@@ -88,8 +143,3 @@ En Windows, cierra el bot, borra la carpeta `baileys_auth_info` y abre
 `iniciar.bat` otra vez.
 
 También quita el dispositivo viejo en WhatsApp, en Dispositivos vinculados.
-
-## Seguridad
-
-Lee [SEGURIDAD.txt](SEGURIDAD.txt). No compartas la carpeta
-`baileys_auth_info`, ahí está tu sesión de WhatsApp.
