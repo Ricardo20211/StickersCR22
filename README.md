@@ -1,4 +1,4 @@
-# StickersCR con sonido
+# StickersCR Creado por demetrio+506 con sonido
 
 Bot de WhatsApp para hacer stickers. Funciona en Termux y en Windows.
 
@@ -75,17 +75,63 @@ vinculados.
 
 https://github.com/user-attachments/assets/dbd03b35-76f3-4806-a1fa-f1958b2dbc60
 
+
+
 ## Comandos
 
 | Comando | Qué hace |
 | --- | --- |
 | `#s` | Convierte una foto o video en sticker |
 | `#s "hola"` | Sticker con el texto "hola" abajo |
+| `#s <link>` | Sticker desde un link (TikTok, Facebook o X), recortado cuadrado y centrado |
+| `#s <link> completo` | Igual, pero con el video completo centrado (sin recortar) |
 | `#s+a` | Sticker de video con sonido |
+| `#s+a <link>` | Sticker con sonido desde un link |
 | `#toimg` | Sticker a imagen |
 | `#tomp4` | Sticker animado a video |
 | `#recortar` | Recorta las dimensiones de un video a 1:1 |
 | `#s-name "paquete" "autor"` | Cambia el nombre y el autor de un sticker |
+
+Manda el comando junto con la foto o el video, o respondiendo a un mensaje.
+
+### Comandos para el dueño
+
+El dueño es tu número personal. El bot te lo pide la primera vez que lo
+inicias, después de elegir cómo vincularlo, y lo guarda en
+`config/owners.json`. Solo ese número puede usar estos comandos. Si otra
+persona los manda, el bot no le contesta.
+
+Al dueño el bot le funciona siempre, aunque esté apagado en grupos o en
+chats privados.
+
+| Comando | Qué hace |
+| --- | --- |
+| `#grupos on` / `#grupos off` | Deja que el bot funcione o no en grupos |
+| `#privado on` / `#privado off` | Deja que el bot funcione o no en chats privados |
+| `#listagrupos` | Muestra los grupos donde está el bot |
+| `#permitir <número>` | Hace que el bot solo funcione en los grupos que permitas |
+| `#quitar <número>` | Quita un grupo de los permitidos |
+
+El número de `#permitir` y `#quitar` es el que aparece en `#listagrupos`.
+También puedes mandar `#permitir` o `#quitar` dentro del grupo, sin número.
+Si no hay grupos permitidos, el bot funciona en todos.
+
+### Stickers desde links
+
+Manda `#s` o `#s+a` seguido del link de un video, por ejemplo
+`#s https://vm.tiktok.com/...`. El bot baja el video, le quita los bordes
+negros y lo recorta en cuadrado. Si agregas `completo`, no lo recorta y el
+video sale entero. Con `#s+a` el sticker lleva el sonido del video.
+
+Solo acepta links de TikTok, Facebook y X (Twitter). Con
+cualquier otro sitio responde que no está permitido.
+
+El video puede pesar hasta 50MB y durar hasta 2 minutos. El sticker usa los
+primeros 12 segundos.
+
+**Links:** `#s <link>` necesita [yt-dlp](https://github.com/yt-dlp/yt-dlp). Es opcional:
+sin él, todo lo demás funciona igual
+
 
 Manda el comando junto con la foto o el video, o respondiendo a un mensaje.
 
