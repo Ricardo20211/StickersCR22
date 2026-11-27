@@ -14,7 +14,7 @@ const { FfmpegBusyError } = require('../utils/ffmpegQueue');
 ffmpeg.setFfmpegPath(require('../utils/ffmpegBin').resolveFfmpegPath());
 
 const MAX_STICKER_JOBS = 30;
-const MAX_VIDEO_DURATION = 15;
+const MAX_VIDEO_DURATION = 30;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const STICKER_SIZE = 512;
 const TARGET_ANIMATED = 480 * 1024;
@@ -22,7 +22,7 @@ const TARGET_STATIC = 280 * 1024;
 const WAVEFORM_BARS = 32;
 const FONT_SIZE = 48;
 const MAX_CHARS_PER_LINE = 13;
-const PACK_NAME = 'CR';
+const PACK_NAME = 'Sticker | Demetrio Ricardo🇨🇷';
 const DEFAULT_PUBLISHER = 'ʙᴏᴛ +506';
 
 const IMAGE_EXT = {
