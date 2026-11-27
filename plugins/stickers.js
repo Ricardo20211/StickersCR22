@@ -22,8 +22,8 @@ const TARGET_STATIC = 280 * 1024;
 const WAVEFORM_BARS = 32;
 const FONT_SIZE = 48;
 const MAX_CHARS_PER_LINE = 13;
-const PACK_NAME = 'OPglobalBOT';
-const DEFAULT_PUBLISHER = 'ᴏɴᴇ ᴘɪᴇᴄᴇ ɢʟᴏʙᴀʟ ʙᴏᴛ';
+const PACK_NAME = 'CR';
+const DEFAULT_PUBLISHER = 'ʙᴏᴛ +506';
 
 const IMAGE_EXT = {
   'image/jpeg': 'jpg', 'image/jpg': 'jpg', 'image/png': 'png',
