@@ -13,12 +13,12 @@ const { FfmpegBusyError } = require('../utils/ffmpegQueue');
 
 ffmpeg.setFfmpegPath(require('../utils/ffmpegBin').resolveFfmpegPath());
 
-const const MAX_STICKER_JOBS = 60;
+const MAX_STICKER_JOBS = 45;
 const MAX_VIDEO_DURATION = 25;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const STICKER_SIZE = 512;
-const TARGET_ANIMATED = 400 * 1024;
-const TARGET_STATIC = 100 * 1024;
+const TARGET_ANIMATED = 480 * 1024;
+const TARGET_STATIC = 280 * 1024;
 const WAVEFORM_BARS = 32;
 const FONT_SIZE = 48;
 const MAX_CHARS_PER_LINE = 13;
@@ -278,7 +278,7 @@ const handler = async (message, sock, reply) => {
   };
 
   const media = getMedia(message);
-  if (!media) return fail(withSound ? 'Responde a un video con "#s".' : 'Responde a una imagen o video con "#s".');
+  if (!media) return fail(withSound ? 'Responde a un video con "#s+a".' : 'Responde a una imagen o video con "#s".');
   if (media.invalid) return fail('Formato no compatible. Envía una imagen, un video o un gif.');
   if (media.unsupported) return fail('Formato no compatible. Envía JPG, PNG, GIF, WEBP, BMP, MP4, WEBM, MOV, AVI o 3GP.');
   if (withSound && !media.isVideo) return fail('#s+a es para videos con audio. Para imágenes usa #s.');
@@ -323,4 +323,4 @@ const handler = async (message, sock, reply) => {
   }
 };
 
-module.exports = { command: '#a', aliases: ['#sticker', '#stiker', '#s'], handler };
+module.exports = { command: '#s', aliases: ['#sticker', '#stiker', '#s+a'], handler };
