@@ -14,7 +14,7 @@ const { FfmpegBusyError } = require('../utils/ffmpegQueue');
 ffmpeg.setFfmpegPath(require('../utils/ffmpegBin').resolveFfmpegPath());
 
 const MAX_STICKER_JOBS = 30;
-const MAX_VIDEO_DURATION = 30;
+const MAX_VIDEO_DURATION = 20;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const STICKER_SIZE = 512;
 const TARGET_ANIMATED = 480 * 1024;
@@ -118,8 +118,8 @@ function buildDrawtextFilter(text) {
 }
 
 function parseOverlayText(body) {
-  const match = body.match(/^×s(?:ticker|tiker|\+a)?\s+["“”]([^"“”]+)["“”]/iu)
-    || body.match(/^×s(?:ticker|tiker|\+a)?\s+(.+)/iu);
+  const match = body.match(/^#s(?:ticker|tiker|\+a)?\s+["“”]([^"“”]+)["“”]/iu)
+    || body.match(/^#s(?:ticker|tiker|\+a)?\s+(.+)/iu);
   return match?.[1]?.trim() || null;
 }
 
@@ -268,7 +268,7 @@ const sizeText = (bytes) => `Pesa ${(bytes / 1048576).toFixed(1)}MB. Máximo ${M
 const handler = async (message, sock, reply) => {
   const jid = message.key.remoteJid;
   const body = getMessageContent(message);
-  const withSound = body.split(/\s+/, 1)[0].toLowerCase() === '×s+a';
+  const withSound = body.split(/\s+/, 1)[0].toLowerCase() === '#s+a';
   const senderId = (message.key.participant || jid).replace(/:\d+@/, '@');
   const creatorName = message.pushName || senderId.split('@')[0];
 
@@ -323,4 +323,4 @@ const handler = async (message, sock, reply) => {
   }
 };
 
-module.exports = { command: '×s', aliases: ['×sticker', '×stiker', '×s+a'], handler };
+module.exports = { command: '#s', aliases: ['#sticker', '#stiker', '#s+a'], handler };
