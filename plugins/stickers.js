@@ -14,7 +14,7 @@ const { FfmpegBusyError } = require('../utils/ffmpegQueue');
 ffmpeg.setFfmpegPath(require('../utils/ffmpegBin').resolveFfmpegPath());
 
 const MAX_STICKER_JOBS = 30;
-const MAX_VIDEO_DURATION = 12;
+const MAX_VIDEO_DURATION = 15;
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
 const STICKER_SIZE = 512;
 const TARGET_ANIMATED = 480 * 1024;
