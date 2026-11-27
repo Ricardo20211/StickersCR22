@@ -1,4 +1,4 @@
-# botstickers con sonido
+# StickersCR con sonido
 
 Bot de WhatsApp para hacer stickers. Funciona en Termux y en Windows.
 
@@ -39,7 +39,7 @@ de la carpeta del bot, y no se sube a ningún lado.
 Para borrarla en Android, detén el bot y escribe esto en Termux:
 
 ```bash
-rm -rf ~/botstickers/baileys_auth_info
+rm -rf ~/StickersCR/baileys_auth_info
 ```
 
 La carpeta está dentro del almacenamiento privado de Termux, así que no
@@ -102,7 +102,7 @@ Instala Termux desde [F-Droid](https://f-droid.org/packages/com.termux/),
 y escribe:
 
 ```bash
-pkg update -y && pkg install -y git && git clone https://github.com/opgbl/botstickers ~/botstickers && cd ~/botstickers && bash start.sh
+pkg update -y && pkg install -y git && git clone https://github.com/Ricardo20211/StickersCR/ && cd ~/StickersCR && bash start.sh
 ```
 
 La primera vez instala todo lo necesario y te pregunta cómo vincular el
@@ -120,7 +120,7 @@ notificación de Termux.
 ### Volver a iniciar el bot
 
 ```bash
-cd ~/botstickers && bash start.sh
+cd ~/StickersCR && bash start.sh
 ```
 
 No hace falta vincularlo de nuevo: la sesión queda guardada en la carpeta
@@ -131,7 +131,7 @@ No hace falta vincularlo de nuevo: la sesión queda guardada en la carpeta
 Cuando haya una versión nueva, detén el bot y escribe:
 
 ```bash
-cd ~/botstickers && git pull && npm install --omit=dev --no-audit --no-fund && bash start.sh
+cd ~/StickersCR && git pull && npm install --omit=dev --no-audit --no-fund && bash start.sh
 ```
 
 No pierdes la sesión: la carpeta `baileys_auth_info` y `config/owners.json`
@@ -143,7 +143,7 @@ Si el bot no conecta, se desconecta todo el tiempo o cerraste la sesión
 en WhatsApp, borra la sesión y vuelve a vincularlo:
 
 ```bash
-rm -rf ~/botstickers/baileys_auth_info && cd ~/botstickers && bash start.sh
+rm -rf ~/StickersCR/baileys_auth_info && cd ~/StickersCR && bash start.sh
 ```
 
 ### Eliminar el bot por completo
@@ -154,7 +154,7 @@ rm -rf ~/botstickers/baileys_auth_info && cd ~/botstickers && bash start.sh
 3. Borra la carpeta del bot:
 
    ```bash
-   rm -rf ~/botstickers
+   rm -rf ~/StickersCR
    ```
 
 4. Opcional: si no usas Node.js ni ffmpeg para otra cosa, también puedes
